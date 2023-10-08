@@ -1,0 +1,5 @@
+export const GET_SONGS = 'GET_SONGS'
+export const GET_SONGS_BY_ID = 'GET_SONGS_BYid'
+export const CREATE_SONGS = 'CREATE_SONGS'
+export const UPDATE_SONGS_BY_ID = 'UPDATE_SONGS_BYid'
+export const DELETE_SONGS_BY_ID = 'DELETE_SONGS_BYid'
