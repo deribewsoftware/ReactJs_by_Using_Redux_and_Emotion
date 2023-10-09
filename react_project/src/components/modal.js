@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled';
-
+import {css} from '@emotion/css';
 import {keyframes}from '@emotion/react';
-
+import {AiOutlineClose} from 'react-icons/ai';
 
 
 const fadeIn = keyframes`
@@ -44,9 +44,12 @@ position: fixed;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-height: 100vh;
-width:100vw;
+
 animation: ${fadeIn} 0.3s ease-in;
+
+visibility:${props=>(props.isModalShow? 'visible':'hidden')};
+
+transition:all 0.5s ease-out;
 
 
 `
@@ -63,17 +66,49 @@ animation: ${contextAnimation} 0.3s ease-in;
 
 
 const ModalContent=styled.div`
+
 background: white;
 padding: 20px;
 border-radius: 8px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 width: 50%;
+@media(max-width:768px){
+  width:95%;
+  
+
+}
 `
 const Modal = (props) => {
   return (
-    <ModalDiv>
+    <ModalDiv isModalShow={props.isShow}>
       <ModalDialog>
     <ModalContent>
+ <div
+ className={
+  css`
+  display:flex;
+  justify-content:end;
+  `
+ }
+ >
+<button
+onClick={props.closeButton}
+className={
+  css`
+  border:none;
+  background-color:white;
+  outline:none;
+  :hover{
+    color:white;
+    background-color:rgba(250,150,150,1);
+  }
+  `
+}
+><AiOutlineClose size={30}
+
+/></button>
+ </div>
+
         {props.children}
     </ModalContent>
       </ModalDialog>

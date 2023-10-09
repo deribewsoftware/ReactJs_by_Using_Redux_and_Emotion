@@ -12,7 +12,7 @@ const Container = styled.div`
 width: 100%;
 height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(to right, #00b894, #55efc4);
+  background: linear-gradient(to right,#16a085, #1abc9c);
   font-weight: bold;
 `;
 

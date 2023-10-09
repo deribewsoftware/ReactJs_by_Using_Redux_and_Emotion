@@ -12,7 +12,7 @@ function App() {
 
  
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: '#ecf0f1'}}>
 <BrowserRouter>
       <Routes>
         <Route path="/" element={<Root />}>
@@ -27,14 +27,6 @@ function App() {
     </BrowserRouter>
 
 
-
-
-
-
-
-     
-   
-     
     </div>
   );
 }

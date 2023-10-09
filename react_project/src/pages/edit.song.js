@@ -3,7 +3,7 @@ import { useParams,useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import Form from '../components/form';
 import Input from '../components/input';
-
+import {css} from '@emotion/css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GET_SONGS_BY_ID, UPDATE_SONGS_BY_ID } from '../types';
@@ -76,11 +76,37 @@ const handleSubmit=async ()=>{
 
     
 return (
-    <>
-    
-    <h1>edit page {editId}</h1>
+    <div
+    className={
+      css`
+      display:flex;
+      justify-content:center;
+      background: linear-gradient(to right,#16a085, #1abc9c);
 
-    <Form onClick={handleSubmit} formContent={
+      height:100vh;
+      align-items:center;`
+      
+    }
+    >
+    
+    <div
+    className={
+      css`
+      background-color:white;
+      text-align:center;
+      padding:20px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      @media(max-width:768px){
+     margin:10px;
+     width:100%;
+     height:90%;
+      }
+      `
+    }
+    >
+    <Form 
+    onCancel={()=>navigate('/')}
+    onClick={handleSubmit} formContent={
             <>
            
              
@@ -90,9 +116,12 @@ return (
             <Input labelName='Url:' Value={Url} onchange={event => setUrl(event.target.value)} /></>
     
           
-           }/> 
+           }/>
+    </div>
+
+     
            <ToastContainer/>
-    </>
+    </div>
 );
 }
 export default EditSong;

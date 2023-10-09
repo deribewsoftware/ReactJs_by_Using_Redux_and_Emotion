@@ -18,6 +18,9 @@ height:120px;
 background-color:white;
 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 border-radius:10px;
+:hover{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
 `
 const Content=styled.div`
 width:100%;
@@ -29,9 +32,9 @@ margin:0;
 `;
 const ContentFlex=styled.div`
 display:flex;
-justify-content:space-around;
+justify-content:center;
 padding-bottom:10px;
-
+margin-left:20px;
 text-align:center;
 font-size:10px;
 color:gray;
@@ -54,8 +57,8 @@ const PopUp=styled.div`
 position:absolute;
 top:23px;
 right:18px;
-background-color:#f1f2f6;
-box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+background-color:white;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 width:80px;
 display:flex;
 flex-direction:column;
@@ -66,13 +69,16 @@ gap:1;
 `
 
 
-const ActionButton=styled.div`
+const ActionButton=styled.button`
 display:flex;
+border:none;
+outline:none;
+
 flex-direction:row;
 width:100%;
 justify-content:start;
 transition:all 0.3s ease-out;
-padding:2px;
+padding:2px 5px;
  :hover{
  background-color: #bdc3c7;
 }
@@ -106,10 +112,10 @@ const [popup,setPopup]=useState(false)
           className={css`
             height:20px;
             width:20px;
-           border:solid 2px #bdc3c7;
+           border:solid 1px #bdc3c7;
             border-radius:50%;
             color:#16a085;
-            background-color:#ecf0f1;
+            :hover{background-color:#ecf0f1;}
           
             box-sizing:border-box;
          
@@ -121,15 +127,31 @@ const [popup,setPopup]=useState(false)
              />
           </div>
         </div>
-        <h5>{props.title}</h5>
+        <h5
+         className={
+          css`
+          margin-left:20px;`
+        }
+        >{props.title}</h5>
       <ContentFlex>
-        <p>{props.artist}</p>
+        <p
+        className={
+          css`
+          margin-left:10px;`
+        }
+        >{props.artist}</p>
         
       </ContentFlex>
       </Content>
 {popup?<PopUp>
 
-  <Link to={`edit/${props.editId}`}>
+  <Link className={
+  css`
+  text-decoration: none;
+  `
+}
+
+     to={`edit/${props.editId}`}>
   <ActionButton
   className={css`
   color: #48bb78;
@@ -142,7 +164,7 @@ const [popup,setPopup]=useState(false)
   /> <span
   className={css`
   width:100%;
-  padding-left:4px;
+  
   font-size:12px;
   font-weight:600;
   `}
@@ -151,8 +173,14 @@ const [popup,setPopup]=useState(false)
 
 
 
-<Link to={`/delete`}>
-<ActionButton
+<Link to={`/delete`}
+className={
+  css`
+  text-decoration: none;
+  `
+}
+>
+<ActionButton type='button'
 onClick={props.onClick}
 className={css`
 color: #f56565;
@@ -175,7 +203,13 @@ color: #f56565;
 
 {/* play */}
 
-<Link to={`play/${props.editId}`}>
+<Link to={`play/${props.editId}`}
+className={
+  css`
+  text-decoration: none;
+  `
+}
+>
   <ActionButton
   className={css`
   color: color: #60a5fa;

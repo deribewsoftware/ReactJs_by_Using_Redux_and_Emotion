@@ -8,19 +8,38 @@ const Div=styled.div`
 display:flex;
 flex-direction:column;
 gap:2;
-padding:10px 2px;
+margin-top:10px;
+padding-top:10px;
+padding-left:10px;
 text-align:start;
+
+border-bottom: 2px solid #ccc;
+    transition: border-bottom-color 0.5s;
+background-color:#ecf0f1;
+:hover {
+  border-bottom-color: #16a085;
+  color:#16a085;
+  font-weight: bold;
+}
 `
 
 const Label=styled.label`
 font-weight:w600;
+font-size:14px;
+
 `
 
 const InputStyle=styled.input`
 outline:none;
 border:none;
-background-color:rgb(250,250,250);
-    padding:6px 2px;
+transition: border-bottom-color 0.5s;
+font-family:'Tilt Neon', sans-serif;
+background-color:#ecf0f1;
+    padding:2px 2px;
+    :focus{
+      background-color:white;
+      padding:10px 2px
+    }
     `
 
 
