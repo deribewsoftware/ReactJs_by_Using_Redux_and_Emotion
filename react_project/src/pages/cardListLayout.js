@@ -11,7 +11,7 @@ import Input from '../components/input';
 import {useSelector} from 'react-redux';
 import {css} from '@emotion/css';
 import {useDispatch }from 'react-redux';
-
+import { TailSpin} from 'react-loader-spinner'
 import { CREATE_SONGS, GET_SONGS,DELETE_SONGS_BY_ID } from '../types';
 import { nanoid } from '@reduxjs/toolkit';
 import { ToastContainer, toast } from 'react-toastify';
@@ -69,7 +69,7 @@ margin-bottom:40px;
 
 const CardListLayout = () => {
   const songs=useSelector(state=>state.songs);
-  const song=useSelector(state=>state.song);
+ 
   const dispatch=useDispatch();
 useEffect(() => {
   
@@ -186,7 +186,19 @@ const handleDelete = async (id) => {
     <ListLayout>
       <Hero/>
      < CardList>
-     {
+    {songs===[]&&<TailSpin
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="tail-spin-loading"
+  radius="1"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>}
+
+
+     {songs!==[]&&
       songs.map((song)=><Card
       key={song.id}
       editId={song.id}
